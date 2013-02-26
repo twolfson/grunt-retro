@@ -40,7 +40,7 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('echo-src', 'Save src to dest file', function () {
     var file = this.file,
         src = file.src,
-        dest = this.data.dest || this.data;
+        dest = this.data.dest || this.target;
     grunt.file.write(dest, JSON.stringify(src));
   });
 
@@ -48,7 +48,7 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('echo-dest', 'Save dest to src file', function () {
     var file = this.file,
         dest = file.dest,
-        src = this.data.src || this.target;
+        src = this.data.src || this.data;
     grunt.file.write(src, JSON.stringify(dest));
   });
 

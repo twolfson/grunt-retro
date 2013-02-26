@@ -63,4 +63,21 @@ exports['retro'] = {
   'src-expansion': compareFiles('src_expansion.txt'),
   'dest-compact': compareFiles('dest_compact.txt'),
   'dest-simple': compareFiles('dest_simple.txt'),
+  'can register and use helpers': function (test) {
+    test.expect(1);
+
+    // Register and use our helper
+    grunt.registerHelper('hello', function () {
+      return 'world';
+    });
+    test.strictEqual(grunt.helper('hello'), 'world');
+
+    // Callback
+    test.done();
+  },
+  'access utils': function (test) {
+    // Assert our utils exist
+    test.ok(grunt.utils);
+    test.done();
+  }
 };
