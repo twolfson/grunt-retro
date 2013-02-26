@@ -19,7 +19,7 @@ module.exports = function (grunt) {
         dest: 'actual/expansion.txt'
       },
       uri: {
-        src: ['http://google.com'],
+        src: ['http://google.com/'],
         dest: 'actual/uri.txt'
       }
     },

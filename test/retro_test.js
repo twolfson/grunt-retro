@@ -20,7 +20,7 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
-{
+var outline = {
   'A grunt@0.3 plugin': {
     'using grunt-retro': {
       'can read single src files': true,
@@ -35,6 +35,21 @@ var grunt = require('grunt');
       'can access grunt.file.glob.minimatch': true
     }
   }
+};
+
+// ANTI-PATTERN: Helper function for comparing tests
+function compareFiles(filename) {
+  return function fileComparison (test) {
+    test.expect(1);
+
+    // Load in the expected and actual content
+    var expectedContent = grunt.file.read('expected/' + filename),
+        actualContent = grunt.file.read('actual/' + filename);
+
+    // Assert they are the same and return
+    test.equal(actualContent, expectedContent, 'should return the correct value.');
+    test.done();
+  }
 }
 
 exports['retro'] = {
@@ -42,12 +57,8 @@ exports['retro'] = {
     // setup here
     done();
   },
-  'multiTask': function(test) {
-    test.expect(1);
-    // tests here
-    var expectedContent = grunt.file.read('expected/file.js'),
-        actualContent = grunt.file.read('actual/file.js');
-    test.equal(actualContent, expectedContent, 'should return the correct value.');
-    test.done();
-  }
+  'src-single': compareFiles('single.txt'),
+  'src-multi': compareFiles('multi.txt'),
+  'src-expansion': compareFiles('expansion.txt'),
+  'src-uri': compareFiles('uri.txt')
 };
