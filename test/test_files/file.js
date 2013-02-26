@@ -1,1 +1,1 @@
-console.log('Hello World!');
+"test_files/file.js"

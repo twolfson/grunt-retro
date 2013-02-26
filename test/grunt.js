@@ -36,24 +36,22 @@ module.exports = function (grunt) {
     }
   });
 
-  // Register tasks for testing
+  // Register task for testing src
   grunt.registerMultiTask('echo-src', 'Save src to dest file', function () {
-    // TODO: Worry about expansion and such
     var file = this.file,
         src = file.src,
-        dest = this.data.dest || Object.getOwnPropertyNames(this.data)[0];
+        dest = this.data.dest || this.data;
     grunt.file.write(dest, JSON.stringify(src));
   });
 
-  // Register tasks for testing
+  // Register task for testing dest
   grunt.registerMultiTask('echo-dest', 'Save dest to src file', function () {
-    // TODO: Worry about expansion and such
     var file = this.file,
         dest = file.dest,
-        src = this.data.src || this.data[Object.getOwnPropertyNames(this.data)[0]];
+        src = this.data.src || this.target;
     grunt.file.write(src, JSON.stringify(dest));
   });
 
   // Run project task then tests.
-  grunt.registerTask('default', 'echo-src test');
+  grunt.registerTask('default', 'echo-src echo-dest test');
 };
