@@ -26,6 +26,7 @@ var grunt = require('grunt');
       'can read single src files': true,
       'can read multiple src files': true,
       'handles src expansions': true,
+      'can use a URI as src file': true,
       'can read dest': true,
       'can register and use helpers': true,
       'can access utils': true,
