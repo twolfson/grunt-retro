@@ -3,12 +3,16 @@
 Add grunt@0.4 functionality to grunt@0.3 plugins
 
 ## Getting Started
-Install the module with: `npm install grunt-retro`
+Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-retro`
+
+Then add this line to your project's `grunt.js` gruntfile:
 
 ```javascript
-var grunt_retro = require('grunt-retro');
-grunt_retro.awesome(); // "awesome"
+grunt.loadNpmTasks('grunt-retro');
 ```
+
+[grunt]: http://gruntjs.com/
+[getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
 ## Documentation
 _(Coming soon)_
@@ -17,11 +21,11 @@ _(Coming soon)_
 _(Coming soon)_
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/gruntjs/grunt).
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint your code using [grunt][grunt] and test via `npm test`.
 
 ## Release History
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2013 Todd Wolfson  
+Copyright (c) 2013 Todd Wolfson
 Licensed under the MIT license.

@@ -21,15 +21,22 @@
       "url": "https://github.com/twolfson/grunt-retro/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/grunt-retro",
+  "main": "grunt.js",
+  "bin": "bin/grunt-retro",
   "engines": {
-    "node": ">= 0.6.0"
+    "node": "*"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt --base ./test/ --config ./test/grunt.js"
   },
   "devDependencies": {
     "grunt": "~0.3.17"
   },
-  "keywords": []
+  "keywords": [
+    "grunt",
+    "gruntplugin",
+    "retrofit",
+    "grunt@0.3",
+    "legacy"
+  ]
 }
