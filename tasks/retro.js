@@ -6,6 +6,7 @@
  * Licensed under the MIT license.
  */
 
+var assert = require('assert');
 module.exports = function (grunt) {
   // Proxy registerTask
   var registerTaskFn = grunt.registerTask;
@@ -24,4 +25,49 @@ module.exports = function (grunt) {
     // Invoke the original function
     return registerTaskFn.apply(this, args);
   };
+
+
+  // Proxy registerMultiTask
+  var registerMultiFn = grunt.registerMultiTask;
+  grunt.registerMultiTask = function (taskName, description, taskFn) {
+    var args = [].slice.call(arguments);
+
+    // Wrap taskFn
+    args[2] = function proxiedTaskFn () {
+      // Fallback this.file
+      this.file = this.file || this.files[0].orig;
+
+      // Call the original function
+      return taskFn.apply(this, arguments);
+    }
+
+    // Call the original function
+    return registerMultiFn.apply(this, args);
+  };
+
+  // Fallback grunt.utils and grunt...minimatch
+  grunt.utils = grunt.utils || grunt.util;
+  grunt.file.glob.minimatch = grunt.file.glob.minimatch || grunt.file.minimatch;
+
+  // Set up storage for helpers
+  var helpers = {};
+
+  // Fallback helper helper
+  function helper(name) {
+    // Look up and assert the helper exists
+    var helperFn = helpers[name];
+    assert(helperFn, 'GRUNT HELPER: "' + name + '" could not be found.');
+
+    // Call the helper with the arguments
+    var args = [].slice.call(arguments, 1);
+    return helperFn.apply(this, args);
+  }
+  grunt.helper = grunt.helper || helper;
+
+  // Fallback registerHelper
+  function registerHelper(name, fn) {
+    helpers[name] = fn;
+  }
+  grunt.registerHelper = grunt.registerHelper || registerHelper;
+
 };

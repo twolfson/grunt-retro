@@ -77,10 +77,12 @@ exports['retro'] = {
   },
   'access utils': function (test) {
     // Assert our utils exist
+    test.expect(1);
     test.ok(grunt.utils);
     test.done();
   },
   'can access grunt.file.glob.minimatch': function (test) {
+    test.expect(1);
     test.ok(grunt.file.glob.minimatch);
     test.done();
   }
