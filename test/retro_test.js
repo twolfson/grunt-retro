@@ -49,7 +49,7 @@ function compareFiles(filename) {
     // Assert they are the same and return
     test.equal(actualContent, expectedContent, 'should return the correct value.');
     test.done();
-  }
+  };
 }
 
 exports['retro'] = {
