@@ -57,9 +57,10 @@ exports['retro'] = {
     // setup here
     done();
   },
-  'src-compact': compareFiles('compact.txt'),
-  'src-single': compareFiles('single.txt'),
-  'src-multi': compareFiles('multi.txt'),
-  'src-expansion': compareFiles('expansion.txt'),
-  'src-uri': compareFiles('uri.txt')
+  'src-compact': compareFiles('src_compact.txt'),
+  'src-single': compareFiles('src_single.txt'),
+  'src-multi': compareFiles('src_multi.txt'),
+  'src-expansion': compareFiles('src_expansion.txt'),
+  'dest-compact': compareFiles('dest_compact.txt'),
+  'dest-simple': compareFiles('dest_simple.txt'),
 };
