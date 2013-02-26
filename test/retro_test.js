@@ -57,6 +57,7 @@ exports['retro'] = {
     // setup here
     done();
   },
+  'src-compact': compareFiles('compact.txt'),
   'src-single': compareFiles('single.txt'),
   'src-multi': compareFiles('multi.txt'),
   'src-expansion': compareFiles('expansion.txt'),
