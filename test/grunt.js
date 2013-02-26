@@ -31,10 +31,21 @@ module.exports = function (grunt) {
         dest: 'actual/simple_test.js'
       }
     },
-    test: {
+    nodeunit: {
       all: '*_test.js'
     }
   });
+  //   test: {
+  //     all: '*_test.js'
+  //   }
+  // });
+  // // TODO: Come back to this when less tired
+  // grunt.config.set('nodeunit', grunt.config.get('test'));
+
+  // Load in grunt-contrib-nodeunit
+  process.chdir('..');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  process.chdir(__dirname);
 
   // Register task for testing src
   grunt.registerMultiTask('echo-src', 'Save src to dest file', function () {
@@ -53,5 +64,8 @@ module.exports = function (grunt) {
   });
 
   // Run project task then tests.
-  grunt.registerTask('default', 'echo-src echo-dest test');
+  // TEST: We can actually run single string of queries
+  // TODO: Come back to this when less tired (for nodeunit)
+  grunt.registerTask('default', 'echo-src echo-dest nodeunit');
+  // grunt.registerTask('default', 'echo-src echo-dest test');
 };
