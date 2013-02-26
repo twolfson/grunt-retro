@@ -34,20 +34,24 @@ module.exports = function (grunt) {
 
     // Wrap taskFn
     args[2] = function proxiedTaskFn () {
-      // If this.file does not exist
+      // Fallback this.file
+      // this.file = this.file || this.files[0].orig;
       var file = this.file;
       if (!file) {
-        // Grab it from [0].orig
-        file = this.files[0].orig;
-
-        // If the file.src is not an array, upcast it as one
-        var src = file.src;
-        if (!Array.isArray(src)) {
-          file.src = [src];
+        // Taken lovingly from https://github.com/gruntjs/grunt/blob/0.3-stable/lib/grunt/task.js#L79-L89
+        this.file = {};
+        // Handle data structured like either:
+        // 'prop': [srcfiles]
+        // {prop: {src: [srcfiles], dest: 'destfile'}}.
+        if (grunt.utils.kindOf(this.data) === 'object') {
+          if ('src' in this.data) { this.file.src = this.data.src; }
+          if ('dest' in this.data) { this.file.dest = this.data.dest; }
+        } else {
+          this.file.src = this.data;
+          // (except for this line)
+          // this.file.dest = target;
+          this.file.dest = this.target;
         }
-
-        // Save file as this.file
-        this.file = file;
       }
 
       // Call the original function

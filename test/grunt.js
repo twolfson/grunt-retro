@@ -19,6 +19,7 @@ module.exports = function (grunt) {
         src: ['test_files/{file,file2}.js'],
         dest: 'actual/src_expansion.txt'
       },
+      // TODO: Move this to a string... =_=
       uri: {
         src: ['http://google.com/'],
         dest: 'actual/src_uri.txt'
