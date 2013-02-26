@@ -34,8 +34,21 @@ module.exports = function (grunt) {
 
     // Wrap taskFn
     args[2] = function proxiedTaskFn () {
-      // Fallback this.file
-      this.file = this.file || this.files[0].orig;
+      // If this.file does not exist
+      var file = this.file;
+      if (!file) {
+        // Grab it from [0].orig
+        file = this.files[0].orig;
+
+        // If the file.src is not an array, upcast it as one
+        var src = file.src;
+        if (!Array.isArray(src)) {
+          file.src = [src];
+        }
+
+        // Save file as this.file
+        this.file = file;
+      }
 
       // Call the original function
       return taskFn.apply(this, arguments);
