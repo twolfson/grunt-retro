@@ -79,5 +79,9 @@ exports['retro'] = {
     // Assert our utils exist
     test.ok(grunt.utils);
     test.done();
+  },
+  'can access grunt.file.glob.minimatch': function (test) {
+    test.ok(grunt.file.glob.minimatch);
+    test.done();
   }
 };
