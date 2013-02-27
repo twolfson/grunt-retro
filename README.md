@@ -25,9 +25,11 @@ module.exports = function (grunt) {
 - Define `this.file` to match the `0.3` specification; `{src, file}`
 - Fallback `this.utils` to be an object of `grunt` utilites
 - Allow for `registerTask` to alias multiple tasks via single string
+
 ```js
 grunt.registerTask('multi-task', 'lint clean test');
 ```
+
 - Add back `grunt.helper` and `grunt.registerHelper` system
 
 ### Nuances
@@ -37,7 +39,8 @@ grunt.registerTask('multi-task', 'lint clean test');
 
 ## Examples
 ### grunt plugin
-``js
+
+```js
 module.exports = function (grunt) {
   // Bind retro functionality
   grunt = require('grunt-retro')(grunt);
