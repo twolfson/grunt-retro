@@ -56,7 +56,7 @@ module.exports = function (grunt) {
 
       // Call the original function
       return taskFn.apply(this, arguments);
-    }
+    };
 
     // Call the original function
     return registerMultiFn.apply(this, args);
@@ -87,4 +87,6 @@ module.exports = function (grunt) {
   }
   grunt.registerHelper = grunt.registerHelper || registerHelper;
 
+  // Return grunt for a fluent interface
+  return grunt;
 };
