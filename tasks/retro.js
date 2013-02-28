@@ -100,7 +100,7 @@ module.exports = function (grunt) {
     });
 
     // Return the expanded dirs
-    return expandedDirs
+    return expandedDirs;
   };
   grunt.file.expandFiles = grunt.file.expandFiles || function (files) {
     return gruntFileExpand({filter: 'isFile'}, files);
