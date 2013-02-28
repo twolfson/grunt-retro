@@ -73,6 +73,7 @@ module.exports = function (grunt) {
         src = file.src,
         srcDirs = grunt.file.expandDirs(src),
         dest = this.data.dest || this.target;
+    srcDirs.sort();
     grunt.file.write(dest, JSON.stringify(srcDirs));
   });
 
@@ -82,6 +83,7 @@ module.exports = function (grunt) {
         src = file.src,
         srcFiles = grunt.file.expandFiles(src),
         dest = this.data.dest || this.target;
+    srcFiles.sort();
     grunt.file.write(dest, JSON.stringify(srcFiles));
   });
 
