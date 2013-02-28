@@ -87,11 +87,9 @@ exports['retro'] = {
     test.expect(1);
     test.ok(grunt.file.glob.minimatch);
     test.done();
-  // },
-  // 'can expand directories': function (test) {
-
-  // },
-  // 'can expand files': function (test) {
-
-  }
+  },
+  'expand-dirs-string': compareFiles('expand_dirs_string.txt'),
+  'expand-dirs-array': compareFiles('expand_dirs_array.txt'),
+  'expand-files-string': compareFiles('expand_files_string.txt'),
+  'expand-files-array': compareFiles('expand_files_array.txt')
 };
