@@ -87,14 +87,14 @@ module.exports = function (grunt) {
   }
   grunt.registerHelper = grunt.registerHelper || registerHelper;
 
-  // // Fallback file expansions
-  // var gruntFileExpand = grunt.file.expand;
-  // grunt.file.expandDirs = grunt.file.expandDirs || function (files) {
-  //   return gruntFileExpand({filter: 'isDirectory'}, files);
-  // };
-  // grunt.file.expandFiles = grunt.file.expandFiles || function (files) {
-  //   return gruntFileExpand({filter: 'isFile'}, files);
-  // };
+  // Fallback file expansions
+  var gruntFileExpand = grunt.file.expand;
+  grunt.file.expandDirs = grunt.file.expandDirs || function (files) {
+    return gruntFileExpand({filter: 'isDirectory'}, files);
+  };
+  grunt.file.expandFiles = grunt.file.expandFiles || function (files) {
+    return gruntFileExpand({filter: 'isFile'}, files);
+  };
 
   // Return grunt for a fluent interface
   return grunt;
