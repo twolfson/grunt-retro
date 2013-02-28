@@ -32,7 +32,9 @@ var outline = {
       'can access utils': true,
       // TODO: There is probably room for abstraction on this last one (mapping of key lookup to key lookup)
       // {'grunt.utils.minimatch': 'grunt.file.glob.minimatch'}
-      'can access grunt.file.glob.minimatch': true
+      'can access grunt.file.glob.minimatch': true,
+      'can expand directories': true,
+      'can expand files': true
     }
   }
 };
@@ -85,5 +87,11 @@ exports['retro'] = {
     test.expect(1);
     test.ok(grunt.file.glob.minimatch);
     test.done();
+  // },
+  // 'can expand directories': function (test) {
+
+  // },
+  // 'can expand files': function (test) {
+
   }
 };
