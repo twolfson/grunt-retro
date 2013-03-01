@@ -88,10 +88,18 @@ module.exports = function (grunt) {
   grunt.registerHelper = grunt.registerHelper || registerHelper;
 
   // Fallback file expansions
-  var gruntFileExpand = grunt.file.expand;
-  grunt.file.expandDirs = grunt.file.expandDirs || function (dirs) {
+  var _ = grunt.utils._,
+      gruntFileExpand = grunt.file.expand;
+  grunt.file.expandDirs = grunt.file.expandDirs || function (options, dirs) {
+    // If there are no dirs, fallback options
+    if (dirs === undefined) {
+      dirs = options;
+      options = {};
+    }
+
     // Collect the directories
-    var expandedDirs = gruntFileExpand({filter: 'isDirectory'}, dirs);
+    var expandOptions = _.extend({filter: 'isDirectory'}, options),
+        expandedDirs = gruntFileExpand(expandOptions, dirs);
 
     // Append a `/` to directories (except for root)
     expandedDirs = expandedDirs.map(function (dir) {
