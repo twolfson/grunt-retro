@@ -101,7 +101,6 @@ module.exports = function (grunt) {
 
   // Register task for testing expandDirs
   grunt.registerMultiTask('expand-dirs-with-dot', 'Save src (with dot) to dest file', function () {
-console.log('HEEEEEEEEEEEEEEEEY');
     var file = this.file,
         src = file.src,
         srcDirs = grunt.file.expandDirs({'dot': true}, src),
@@ -123,8 +122,8 @@ console.log('HEEEEEEEEEEEEEEEEY');
   // Register task about test setup
   grunt.registerTask('echo', 'echo-src echo-dest');
   grunt.registerTask('expand', 'expand-dirs expand-files');
-  grunt.registerTask('with-dot', 'expand-dirs-with-dot expand-files-with-dot');
-  grunt.registerTask('test-setup', 'echo expand with-dot');
+  grunt.registerTask('expand-with-dot', 'expand-dirs-with-dot expand-files-with-dot');
+  grunt.registerTask('test-setup', 'echo expand expand-with-dot');
 
   // Return grunt for a fluent interface
   return grunt;

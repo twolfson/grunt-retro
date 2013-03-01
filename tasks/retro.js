@@ -96,18 +96,16 @@ module.exports = function (grunt) {
       dirs = options;
       options = {};
     }
-console.log('hey');
+
     // Collect the directories
     var expandOptions = _.extend({filter: 'isDirectory'}, options),
         expandedDirs = gruntFileExpand(expandOptions, dirs);
-console.log('hey2', expandOptions, expandedDirs);
 
     // Append a `/` to directories (except for root)
     expandedDirs = expandedDirs.map(function (dir) {
       if (dir === '/') { return dir; }
       return dir + '/';
     });
-console.log('hey3');
 
     // Return the expanded dirs
     return expandedDirs;
