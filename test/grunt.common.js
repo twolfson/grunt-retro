@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     },
     'echo-dest': {
       'actual/compact_test.txt': 'actual/dest_compact.txt',
-      simple: {
+      single: {
         src: 'actual/dest_simple.txt',
         dest: 'actual/simple_test.js'
       }
@@ -50,13 +50,13 @@ module.exports = function (grunt) {
       }
     },
     'expand-dirs-with-dot': {
-      options: {
+      string: {
         src: 'test_files/**/*',
         dest: 'actual/expand_dirs_options.txt'
       }
     },
     'expand-files-with-dot': {
-      options: {
+      string: {
         src: 'test_files/**/*',
         dest: 'actual/expand_files_options.txt'
       }
@@ -101,6 +101,7 @@ module.exports = function (grunt) {
 
   // Register task for testing expandDirs
   grunt.registerMultiTask('expand-dirs-with-dot', 'Save src (with dot) to dest file', function () {
+console.log('HEEEEEEEEEEEEEEEEY');
     var file = this.file,
         src = file.src,
         srcDirs = grunt.file.expandDirs({'dot': true}, src),
@@ -122,8 +123,8 @@ module.exports = function (grunt) {
   // Register task about test setup
   grunt.registerTask('echo', 'echo-src echo-dest');
   grunt.registerTask('expand', 'expand-dirs expand-files');
-  grunt.registerTask('expand-with-dot', 'expand-dirs-with-dot expand-files-with-dot');
-  grunt.registerTask('test-setup', 'echo expand expand-with-dot');
+  grunt.registerTask('with-dot', 'expand-dirs-with-dot expand-files-with-dot');
+  grunt.registerTask('test-setup', 'echo expand with-dot');
 
   // Return grunt for a fluent interface
   return grunt;
