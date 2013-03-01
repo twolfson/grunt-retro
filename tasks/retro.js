@@ -88,8 +88,8 @@ module.exports = function (grunt) {
   grunt.registerHelper = grunt.registerHelper || registerHelper;
 
   // Fallback file expansions
-  var _ = grunt.utils._,
-      gruntFileExpand = grunt.file.expand;
+  // var _ = grunt.utils._,
+  //     gruntFileExpand = grunt.file.expand;
   grunt.file.expandDirs = grunt.file.expandDirs || function (options, dirs) {
     // If there are no dirs, fallback options
     if (dirs === undefined) {

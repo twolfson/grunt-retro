@@ -34,7 +34,9 @@ var outline = {
       // {'grunt.utils.minimatch': 'grunt.file.glob.minimatch'}
       'can access grunt.file.glob.minimatch': true,
       'can expand directories': true,
-      'can expand files': true
+      'can expand files': true,
+      'can expand directories with options': true,
+      'can expand files with options': true
     }
   }
 };
@@ -91,5 +93,7 @@ exports['retro'] = {
   'expand-dirs-string': compareFiles('expand_dirs_string.txt'),
   'expand-dirs-array': compareFiles('expand_dirs_array.txt'),
   'expand-files-string': compareFiles('expand_files_string.txt'),
-  'expand-files-array': compareFiles('expand_files_array.txt')
+  'expand-files-array': compareFiles('expand_files_array.txt'),
+  'expand-dirs-options': compareFiles('expand_dirs_options.txt'),
+  'expand-files-options': compareFiles('expand_files_options.txt')
 };
