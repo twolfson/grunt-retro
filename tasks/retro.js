@@ -110,8 +110,14 @@ module.exports = function (grunt) {
     // Return the expanded dirs
     return expandedDirs;
   };
-  grunt.file.expandFiles = grunt.file.expandFiles || function (files) {
-    return gruntFileExpand({filter: 'isFile'}, files);
+  grunt.file.expandFiles = grunt.file.expandFiles || function (options, files) {
+    if (files === undefined) {
+      files = options;
+      options = {};
+    }
+    var expandOptions = _.extend({filter: 'isFile'}, options),
+        expandedFiles = gruntFileExpand(expandOptions, files);
+    return expandedFiles;
   };
 
   // Return grunt for a fluent interface
