@@ -45,44 +45,7 @@ function compareFiles(filename) {
   };
 }
 
-exports['retro'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'src-compact': compareFiles('src_compact.txt'),
-  'src-single': compareFiles('src_single.txt'),
-  'src-multi': compareFiles('src_multi.txt'),
-  'src-expansion': compareFiles('src_expansion.txt'),
-  'dest-compact': compareFiles('dest_compact.txt'),
-  'dest-simple': compareFiles('dest_simple.txt'),
-  'can register and use helpers': function (test) {
-    test.expect(1);
-
-    // Register and use our helper
-    grunt.registerHelper('hello', function () {
-      return 'world';
-    });
-    test.strictEqual(grunt.helper('hello'), 'world');
-
-    // Callback
-    test.done();
-  },
-  'access utils': function (test) {
-    // Assert our utils exist
-    test.expect(1);
-    test.ok(grunt.utils);
-    test.done();
-  },
-  'can access grunt.file.glob.minimatch': function (test) {
-    test.expect(1);
-    test.ok(grunt.file.glob.minimatch);
-    test.done();
-  },
-  'expand-dirs-string': compareFiles('expand_dirs_string.txt'),
-  'expand-dirs-array': compareFiles('expand_dirs_array.txt'),
-  'expand-files-string': compareFiles('expand_files_string.txt'),
-  'expand-files-array': compareFiles('expand_files_array.txt'),
-  'expand-dirs-options': compareFiles('expand_dirs_options.txt'),
-  'expand-files-options': compareFiles('expand_files_options.txt')
+exports['0.4'] = {
+  'src-template': compareFiles('src_template.txt'),
+  'dest-template': compareFiles('dest_template.txt')
 };
