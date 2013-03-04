@@ -6,7 +6,12 @@ module.exports = function (grunt) {
   grunt = require('./grunt.common.js')(grunt);
 
   // Set up grunt 0.4 specific tests
-
+  var _ = grunt.utils._,
+      gruntConfig = grunt.config,
+      echoDest = gruntConfig.get('echo-dest');
+  gruntConfig.set('echo-dest', _.extend(echoDest, {
+    '<%= pkg.name %>.js': 'actual/dest_template.txt'
+  }));
 
   // Add nodeunit config
   grunt.config.set('nodeunit', {
@@ -19,10 +24,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   process.chdir(__dirname);
 
-  // Set up 0.4 tasks
-  grunt.registerTask('0.4-test', '');
+  // // Set up 0.4 tasks
+  // grunt.registerTask('0.4-test', '');
 
   // Run project task then tests.
   // TEST: We can actually run single string of queries
-  grunt.registerTask('default', 'test-setup 0.4-test nodeunit');
+  // grunt.registerTask('default', 'test-setup 0.4-test nodeunit');
+  grunt.registerTask('default', 'test-setup nodeunit');
 };
