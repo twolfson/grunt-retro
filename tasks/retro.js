@@ -41,13 +41,11 @@ module.exports = function (grunt) {
         // Keep the original formatting
         this.file = this.files[0].orig;
 
-        // If the src was single
+        // If the src was single, downcast it from array to string
+        // DEV: this.files will *always* have `src` as an array
         var src = this.data.src || this.data;
-        console.log(src);
         if (!Array.isArray(src)) {
-          console.log('oh hey');
           this.file.src = this.file.src[0];
-          console.log(this.file);
         }
       }
 
