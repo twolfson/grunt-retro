@@ -1,1 +1,1 @@
-["grunt-retro.js"]
+"grunt-retro.js"

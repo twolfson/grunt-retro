@@ -38,19 +38,16 @@ module.exports = function (grunt) {
       // this.file = this.file || this.files[0].orig;
       var file = this.file;
       if (!file) {
-        // Taken lovingly from https://github.com/gruntjs/grunt/blob/0.3-stable/lib/grunt/task.js#L79-L89
-        this.file = {};
-        // Handle data structured like either:
-        // 'prop': [srcfiles]
-        // {prop: {src: [srcfiles], dest: 'destfile'}}.
-        if (grunt.utils.kindOf(this.data) === 'object') {
-          if ('src' in this.data) { this.file.src = this.data.src; }
-          if ('dest' in this.data) { this.file.dest = this.data.dest; }
-        } else {
-          this.file.src = this.data;
-          // (except for this line)
-          // this.file.dest = target;
-          this.file.dest = this.target;
+        // Keep the original formatting
+        this.file = this.files[0].orig;
+
+        // If the src was single
+        var src = this.data.src || this.data;
+        console.log(src);
+        if (!Array.isArray(src)) {
+          console.log('oh hey');
+          this.file.src = this.file.src[0];
+          console.log(this.file);
         }
       }
 
