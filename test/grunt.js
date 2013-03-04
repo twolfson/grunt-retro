@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 
   // Set up test config
   grunt.config.set('test', {
-    all: '*_test.js'
+    common: 'retro_test.js'
   });
 
   // Run project task then tests.
