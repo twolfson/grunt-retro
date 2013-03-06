@@ -14,10 +14,10 @@ module.exports = function (grunt) {
     // Capture arguments for manipulation
     var args = [].slice.call(arguments);
 
-    // If there is no taskFn
+    // If there isn't a third argument, there's no task description
     if (!taskFn) {
-      // and if taskList is not an array
-      if (!Array.isArray(taskList)) {
+      // Convert string list of tasks to an array
+      if (typeof taskList === "string") {
         args[1] = taskList.split(/\s+/g);
       }
     }
