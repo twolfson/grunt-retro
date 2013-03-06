@@ -1,7 +1,7 @@
 {
   "name": "grunt-retro",
   "description": "Add grunt@0.4 functionality to grunt@0.3 plugins",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "homepage": "https://github.com/twolfson/grunt-retro",
   "author": {
     "name": "Todd Wolfson",
