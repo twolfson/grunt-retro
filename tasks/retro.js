@@ -37,7 +37,7 @@ module.exports = function (grunt) {
       // Fallback this.file
       // this.file = this.file || this.files[0].orig;
       var file = this.file;
-      if (!file) {
+      if (!file && this.files.length !== 0) {
         // Keep the original formatting
         this.file = this.files[0].orig;
 
