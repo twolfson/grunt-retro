@@ -45,7 +45,8 @@ module.exports = function (grunt) {
         // DEV: this.files will *always* have `src` as an array
         var src = this.data.src || this.data;
         if (!Array.isArray(src)) {
-          this.file.src = this.file.src[0];
+          var _src = this.file.src;
+          this.file.src = _src ? _src[0] : null;
         }
       }
 
