@@ -1,4 +1,4 @@
-# grunt-retro
+# grunt-retro [![Donate on Gittip](http://badgr.co/gittip/twolfson.png)](https://www.gittip.com/twolfson/)
 
 Add grunt@0.4 functionality to grunt@0.3 plugins
 
