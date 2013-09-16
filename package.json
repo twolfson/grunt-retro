@@ -23,7 +23,7 @@
   ],
   "main": "tasks/retro.js",
   "engines": {
-    "node": "*"
+    "node": ">= 0.6.0"
   },
   "scripts": {
     "test": "cd test && grunt"
