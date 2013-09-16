@@ -1,4 +1,4 @@
-# grunt-retro
+# grunt-retro [![Build status](https://travis-ci.org/twolfson/grunt-retro.png?branch=master)](https://travis-ci.org/twolfson/grunt-retro)
 
 Add grunt@0.4 functionality to grunt@0.3 plugins
 
@@ -78,6 +78,14 @@ module.exports = function (grunt) {
   grunt.registerTask('default', 'lint test');
 };
 ```
+
+## Donating
+Support this project and [others by twolfson][gittip] via [gittip][].
+
+[![Support via Gittip][gittip-badge]][gittip]
+
+[gittip-badge]: https://rawgithub.com/twolfson/gittip-badge/master/dist/gittip.png
+[gittip]: https://www.gittip.com/twolfson/
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint your code using [grunt][grunt] and test via `npm test`.
