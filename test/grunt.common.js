@@ -72,7 +72,7 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('echo-src', 'Save src to dest file', function () {
     var file = this.file,
         src = file.src,
-        dest = this.data.dest || this.target;
+        dest = file.dest;
     grunt.file.write(dest, JSON.stringify(src));
   });
 
@@ -80,7 +80,7 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('echo-dest', 'Save dest to src file', function () {
     var file = this.file,
         dest = file.dest,
-        src = this.data.src || this.data;
+        src = file.src;
     grunt.file.write(src, JSON.stringify(dest));
   });
 
@@ -89,7 +89,7 @@ module.exports = function (grunt) {
     var file = this.file,
         src = file.src,
         srcDirs = grunt.file.expandDirs(src),
-        dest = this.data.dest || this.target;
+        dest = file.dest;
     srcDirs.sort();
     grunt.file.write(dest, JSON.stringify(srcDirs));
   });
@@ -99,7 +99,7 @@ module.exports = function (grunt) {
     var file = this.file,
         src = file.src,
         srcFiles = grunt.file.expandFiles(src),
-        dest = this.data.dest || this.target;
+        dest = file.dest;
     srcFiles.sort();
     grunt.file.write(dest, JSON.stringify(srcFiles));
   });
@@ -109,7 +109,7 @@ module.exports = function (grunt) {
     var file = this.file,
         src = file.src,
         srcDirs = grunt.file.expandDirs({'dot': true}, src),
-        dest = this.data.dest || this.target;
+        dest = file.dest;
     srcDirs.sort();
     grunt.file.write(dest, JSON.stringify(srcDirs));
   });
@@ -119,7 +119,7 @@ module.exports = function (grunt) {
     var file = this.file,
         src = file.src,
         srcFiles = grunt.file.expandFiles({'dot': true}, src),
-        dest = this.data.dest || this.target;
+        dest = file.dest;
     srcFiles.sort();
     grunt.file.write(dest, JSON.stringify(srcFiles));
   });
