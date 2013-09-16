@@ -29,34 +29,34 @@ module.exports = function (grunt) {
 
   // Proxy registerMultiTask
   var registerMultiFn = grunt.registerMultiTask;
-  // grunt.registerMultiTask = function (taskName, description, taskFn) {
-  //   var args = [].slice.call(arguments);
+  grunt.registerMultiTask = function (taskName, description, taskFn) {
+    var args = [].slice.call(arguments);
 
-  //   // Wrap taskFn
-  //   args[2] = function proxiedTaskFn () {
-  //     // Fallback this.file
-  //     // this.file = this.file || this.files[0].orig;
-  //     var file = this.file;
-  //     if (!file && this.files.length !== 0) {
-  //       // Keep the original formatting
-  //       this.file = this.files[0].orig;
+    // Wrap taskFn
+    args[2] = function proxiedTaskFn () {
+      // Fallback this.file
+      // this.file = this.file || this.files[0].orig;
+      var file = this.file;
+      if (!file && this.files.length !== 0) {
+        // Keep the original formatting
+        this.file = this.files[0].orig;
 
-  //       // If the src was single, downcast it from array to string
-  //       // DEV: this.files will *always* have `src` as an array
-  //       var src = this.data.src || this.data;
-  //       if (!Array.isArray(src)) {
-  //         var _src = this.file.src;
-  //         this.file.src = _src ? _src[0] : null;
-  //       }
-  //     }
+        // If the src was single, downcast it from array to string
+        // DEV: this.files will *always* have `src` as an array
+        var src = this.data.src || this.data;
+        if (!Array.isArray(src)) {
+          var _src = this.file.src;
+          this.file.src = _src ? _src[0] : null;
+        }
+      }
 
-  //     // Call the original function
-  //     return taskFn.apply(this, arguments);
-  //   };
+      // Call the original function
+      return taskFn.apply(this, arguments);
+    };
 
-  //   // Call the original function
-  //   return registerMultiFn.apply(this, args);
-  // };
+    // Call the original function
+    return registerMultiFn.apply(this, args);
+  };
 
   // Fallback grunt.utils and grunt...minimatch
   grunt.utils = grunt.utils || grunt.util;
