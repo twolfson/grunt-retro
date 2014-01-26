@@ -25,6 +25,14 @@ module.exports = function (grunt) {
     '0.4': '0.4_test.js'
   });
 
+  // Define a regression test
+  // Assert we can register tasks sans description
+  grunt.registerMultiTask('descriptionless-multi', 'aa', function () {
+  });
+  grunt.config.set('descriptionless-multi', {
+    a: 'b'
+  });
+
   // Load in grunt-contrib-nodeunit
   process.chdir('..');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
@@ -36,5 +44,5 @@ module.exports = function (grunt) {
   // Run project task then tests.
   // TEST: We can actually run single string of queries
   // grunt.registerTask('default', 'test-setup 0.4-test nodeunit');
-  grunt.registerTask('default', 'test-setup nodeunit');
+  grunt.registerTask('default', 'test-setup nodeunit descriptionless-multi');
 };

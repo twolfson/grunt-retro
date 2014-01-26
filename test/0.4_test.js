@@ -63,25 +63,5 @@ exports['0.4'] = {
 
     // Callback
     test.done();
-  },
-  'run-description-less-multitask': function (test) {
-    // Set up
-    test.expect(0);
-
-    // Assert we can register tasks sans description
-    var ran = false;
-    console.log('wat');
-    grunt.registerMultiTask('my-multitask', 'aa', function () {
-      ran = true;
-    });
-    grunt.config.set('my-multitask', {
-      a: 'b'
-    });
-    grunt.task.run('my-multitask');
-
-    // TODO: Use hook from grunt
-    setTimeout(function () {
-      test.done();
-    }, 100);
   }
 };
