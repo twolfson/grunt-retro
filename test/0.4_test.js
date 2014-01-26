@@ -26,7 +26,8 @@ var outline = {
     'using grunt-retro': {
       'can have templating on src': true,
       'can have templating on dest': true,
-      'can register task without a description': true
+      'can register task without a description': true,
+      'can run a multi task without a description': true
     }
   }
 };
@@ -56,6 +57,20 @@ exports['0.4'] = {
     // Assert we can register tasks sans description
     test.doesNotThrow(function () {
       grunt.registerTask('my-task', function () {
+        return 'Stub content';
+      });
+    }, 'Grunt cannot register tasks without a description');
+
+    // Callback
+    test.done();
+  },
+  'run-description-less-multitask': function (test) {
+    // Set up
+    test.expect(1);
+
+    // Assert we can register tasks sans description
+    test.doesNotThrow(function () {
+      grunt.registerMultiTask('my-task', function () {
         return 'Stub content';
       });
     }, 'Grunt cannot register tasks without a description');
