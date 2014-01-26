@@ -69,13 +69,17 @@ exports['0.4'] = {
     test.expect(1);
 
     // Assert we can register tasks sans description
-    test.doesNotThrow(function () {
-      grunt.registerMultiTask('my-task', function () {
-        return 'Stub content';
-      });
-    }, 'Grunt cannot register tasks without a description');
-
-    // Callback
-    test.done();
+    var ran = false;
+    grunt.registerMultiTask('my-multitask', 'aa', function () {
+      ran = true;
+    });
+    grunt.config.set('my-multitask', {
+      a: 'b'
+    });
+    grunt.task.options({done: function () {
+      grunt.task.options({done: null});
+      test.done();
+    }});
+    grunt.task.run('my-multitask');
   }
 };
