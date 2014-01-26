@@ -27,7 +27,7 @@ module.exports = function (grunt) {
 
   // Define a regression test
   // Assert we can register tasks sans description
-  grunt.registerMultiTask('descriptionless-multi', 'aa', function () {
+  grunt.registerMultiTask('descriptionless-multi', function () {
   });
   grunt.config.set('descriptionless-multi', {
     a: 'b'
