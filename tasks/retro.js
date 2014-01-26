@@ -32,8 +32,15 @@ module.exports = function (grunt) {
   grunt.registerMultiTask = function (taskName, description, taskFn) {
     var args = [].slice.call(arguments);
 
+    // If there isn't a third argument, use `description` as the index of our function
+    var taskFnIndex = 2;
+    if (!taskFn) {
+      taskFnIndex = 1;
+      taskFn = description;
+    }
+
     // Wrap taskFn
-    args[2] = function proxiedTaskFn () {
+    args[taskFnIndex] = function proxiedTaskFn () {
       // Fallback this.file
       // this.file = this.file || this.files[0].orig;
       var file = this.file;
